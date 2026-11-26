@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document Extractor</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+      <div class="upload-section">
+        <h2>Upload Document</h2>
+        <!-- Dropzone (visible when no preview) -->
+        <div class="dropzone" id="dropzone">
+          <input type="file" id="fileInput" accept="image/*,.pdf" hidden />
+          <p class="drop-text" id="dropText">📄 Drag & drop file here or <span class="browse-link">browse</span></p>
+          <p class="file-name" id="fileName"></p>
+          <button class="view-file-btn" id="viewFileBtn" style="display:none;">👁 View File</button>
+        </div>
+        <!-- File Preview Viewer (hidden by default) -->
+        <div class="file-viewer" id="fileViewer" style="display:none;">
+          <div class="viewer-header">
+            <span class="viewer-filename" id="viewerFileName"></span>
+            <button class="viewer-close" id="viewerClose">✕</button>
+          </div>
+          <div class="viewer-content" id="viewerContent">
+            <iframe id="pdfPreview" class="pdf-preview"></iframe>
+            <img id="imagePreview" class="image-preview" />
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-section">
+        <h2>Prompt</h2>
+        <textarea id="promptInput" placeholder="e.g. Extract all text from this document..." rows="4"></textarea>
+        <button id="extractBtn">Extract ➜</button>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+      <div class="right-header">
+        <h2>Extracted Data</h2>
+        <div class="toggle-group">
+          <button class="toggle-btn active" id="rawBtn">Raw</button>
+          <button class="toggle-btn" id="jsonBtn">JSON</button>
+        </div>
+      </div>
+      <div id="loading" class="loading" style="display:none;">Extracting...</div>
+      <pre id="resultArea" class="result-area">Upload a file and click Extract to see results here.</pre>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

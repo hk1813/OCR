@@ -1,0 +1,9 @@
+services:
+  ocr-app:
+    build: .
+    container_name: ocr-extractor
+    ports:
+      - "9090:3000"
+    env_file:
+      - .env
+    restart: unless-stopped
